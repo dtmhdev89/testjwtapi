@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   resource :users, only: :create
   resources :recipes, except: [:new, :edit, :update]
+  resources :books, only: [:index, :show]
   post "/login", to: "users#login"
   get "/auto_login", to: "users#auto_login"
-
-  resources :books, only: [:index, :show]
+  post "/generate_qrcode", to: "two_factor_authenticator#generate_qrcode"
+  post "/enable_tfa", to: "two_factor_authenticator#enable_tfa"
 end

@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::API
+  include ApiError
+
   before_action :authorized
+  before_action :check_user_enabled_two_factor, if: :logged_in?
 
   def encode_token payload
     JWT.encode(payload, Rails.application.secrets.secret_key_base)
@@ -33,6 +36,15 @@ class ApplicationController < ActionController::API
   end
 
   def authorized
-    render json: {message: "Please log in"}, status: :unauthorized unless logged_in?
+    return render json: json_error_by_code(3), status: :unauthorized unless logged_in?
+  end
+
+  def current_user
+    @user || nil
+  end
+
+  def check_user_enabled_two_factor
+    return if current_user && current_user.otp_module_enabled?
+    render json: json_error_by_code(2), status: :unauthorized
   end
 end
