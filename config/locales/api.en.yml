@@ -1,0 +1,9 @@
+en:
+  api:
+    errors:
+      something_wrong: "Something went wrong!"
+      login_failed: "Login Failed!"
+      not_enabled_tfa: "Please enabled 2FA"
+      not_login: "Please Login"
+      invalid_otp: "Wrong OTP. Please, reenter the OTP"
+      tfe_enabled: "Already enabled 2FA"

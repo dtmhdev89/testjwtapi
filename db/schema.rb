@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_160512) do
+ActiveRecord::Schema.define(version: 2020_12_19_155835) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_160512) do
     t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "otp_secret_key"
+    t.integer "otp_module", default: 0
   end
 
 end
