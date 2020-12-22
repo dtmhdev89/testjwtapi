@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorized, only: :auto_login
-  skip_before_action :check_user_enabled_two_factor, only: :create
+  skip_before_action :check_user_enabled_two_factor, only: [:create, :login]
 
   def create
     @user = User.create user_params
