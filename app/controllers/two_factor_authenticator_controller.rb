@@ -30,7 +30,7 @@ class TwoFactorAuthenticatorController < ApplicationController
   end
 
   def render_json_success
-    render json: {message: "Enabled 2FA successfully!", status: 200}
+    render json: {message: "Enabled 2FA successfully!", status_code: 200}
   end
 
   def render_json_fail json_message
