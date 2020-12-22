@@ -36,7 +36,6 @@ class ApplicationController < ActionController::API
   end
 
   def authorized
-    byebug
     return render json: json_error_by_code(3), status: :unauthorized unless logged_in?
   end
 
